@@ -24,11 +24,27 @@ using namespace std;
 bool verifHoriz(char m[M][M], char p[], int l, int c) // feito por Estêvão
 {
     int tamP = strlen(p),contP=0;
-    for (int i=0;i<l;i++)
+    for (int i=0;i<l;i++) 
     {
-        for (int j=0;j<c;j++)
+        for (int j=0;j<c;j++) //verificacao da esquerda pra direita
         {
-            if (m[i][j] == p[contP])
+            if (m[i][j] == p[contP]|| m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a')
+            {
+                contP++;
+                if (contP == tamP)
+                {
+                    cout << "Palavra " << p << " foi localizada horizontalmente a partir de posição (" << i+1 << "," << j+1 << ").";
+                    return true;
+                }
+            }
+            else
+            {
+                contP=0;
+            }
+        }
+        for (int j=c;j>=0;j++) //verificacao da direita pra esquerda
+        {
+            if (m[i][j] == p[contP]|| m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a')
             {
                 contP++;
                 if (contP == tamP)
@@ -51,8 +67,20 @@ bool verifVert(char m[M][M], char p[], int l, int c){ // feito por João
     int tamanho = strlen(p);
     int h=0;
     for(int i=0;i<l;i++){
-        for(int j=0;j<c;j++){
-            if(m[j][i]==p[h]){
+        for(int j=0;j<c;j++){//verifica vertical de cima pra baixo
+           if(m[j][i]==p[h] || m[j][i]==p[h]-'a'+'A' || m[j][i]==p[h]-'A'+'a'){
+                h++;
+                if(h == tamanho){
+                    cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição ("<<j+1<<","<<i++<<").";
+                    encontrei = true;
+                    return encontrei;
+                }
+            }else{
+                h=0;
+            }
+        }
+        for(int j=c;j>=0;j++){//verifica vertical de baixo pra cima
+           if(m[j][i]==p[h] || m[j][i]==p[h]-'a'+'A' || m[j][i]==p[h]-'A'+'a'){
                 h++;
                 if(h == tamanho){
                     cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição ("<<j+1<<","<<i++<<").";
@@ -115,25 +143,33 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
     return false;
 }
 
-int main(){ // feito por todos de acordo com os parametros explicados no comentario inicial
-    char m[M][M],p[N];
+int main(){
+    bool ho, ve, di;
+    char m[M][M]={},p[N];
     int n,k,v;
     cin>>n>>k>>v;
     cin.ignore();
     for(int i=0;i<n;i++){
-        bool ho,ve,di;
         cin.getline(p,100);
         int TAM = strlen(p);
         while(TAM<4){
             cin.getline(p,100);
         }
+    if(m[0][0]=='\0'){
+        for(int j=0;j<M;j++){
+            for(int g=0;g<M;g++){
+                cin>>m[j][g];
+                }
+        }
+    }
+        cin.ignore();
         ho=verifHoriz(m, p, k, v);
-        ve=verifVert(m, p, k, v);
-        di=verifDiag(m, p, k, v);
+        ve=verifVert(m,p,k,v);
+        di=verifDiag(m,p,k,v);
+    }
         if (ho==false && ve==false && di==false)
         {
             cout<<"A palavra "<<p<<" não foi localizada."<<endl;
         }
-    }
     return 0;
 }
