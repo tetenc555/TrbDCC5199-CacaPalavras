@@ -1,5 +1,5 @@
-# TrbDCC5199-CacaPalavras
-Trabalho em grupo de Algoritmos I Prática - Jogo de Caça Palavras em C++
+# Trabalho DCC5199 - Algoritmos I - UFJF -CacaPalavras
+Trabalho em grupo de Algoritmos I - Jogo de Caça Palavras em C++
 
 ## Participantes
 -> Cauã Moreno Lopes Castro - Matrícula: 202335019
