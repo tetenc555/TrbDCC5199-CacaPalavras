@@ -102,7 +102,7 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
         for (int j=0;j<c;j++)
         {
             int x = i, y = j, contP = 0;
-            while (x < l && y < c && m[x][y] == p[contP])
+            while (x < l && y < c && m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a')
             {
                 contP++;
                 x++;
@@ -111,7 +111,7 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
                     return true;
             }
-            while (x < l && y < c && m[x][y] == p[contP])
+            while (x < l && y < c && m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a')
             {
                 contP++;
                 x++;
@@ -120,7 +120,7 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
                     return true;
             }
-            while (x < l && y < c && m[x][y] == p[contP])
+            while (x < l && y < c && m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a')
             {
                 contP++;
                 x--;
@@ -129,7 +129,7 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
                     return true;
             }
-            while (x < l && y < c && m[x][y] == p[contP])
+            while (x < l && y < c && m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a')
             {
                 contP++;
                 x--;
