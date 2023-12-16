@@ -67,7 +67,7 @@ bool verifVert(char m[M][M], char p[], int l, int c){ // feito por João
     return encontrei;
 }
 
-bool verifDiag(char m[M][M], char p[], int l, int c){
+bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
     int tamP = strlen(p);
     for (int i=0;i<l;i++)
     {
