@@ -115,7 +115,7 @@ bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
     return false;
 }
 
-int main(){
+int main(){ // feito por todos de acordo com os parametros explicados no comentario inicial
     char m[M][M],p[N];
     int n,k,v;
     cin>>n>>k>>v;
