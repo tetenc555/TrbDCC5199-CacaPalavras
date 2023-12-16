@@ -67,20 +67,52 @@ bool verifVert(char m[M][M], char p[], int l, int c){ // feito por João
     return encontrei;
 }
 
-bool verifDiag(char m[M][M], char p[], int l, int c){ // feito por Cauã
-    int tamP = strlen(p), contP = 0;
+bool verifDiag(char m[M][M], char p[], int l, int c){
+    int tamP = strlen(p);
     for (int i=0;i<l;i++)
     {
         for (int j=0;j<c;j++)
         {
-            while (m[i][j] == p[contP])
+            int x = i, y = j, contP = 0;
+            while (x < l && y < c && m[x][y] == p[contP])
             {
-                
                 contP++;
-                
+                x++;
+                y++;
+                if (contP == tamP)
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
+                    return true;
+            }
+            while (x < l && y < c && m[x][y] == p[contP])
+            {
+                contP++;
+                x++;
+                y--;
+                if (contP == tamP)
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
+                    return true;
+            }
+            while (x < l && y < c && m[x][y] == p[contP])
+            {
+                contP++;
+                x--;
+                y++;
+                if (contP == tamP)
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
+                    return true;
+            }
+            while (x < l && y < c && m[x][y] == p[contP])
+            {
+                contP++;
+                x--;
+                y--;
+                if (contP == tamP)
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << i+1 << "," << j+1 << ").";
+                    return true;
             }
         }
     }
+    return false;
 }
 
 int main(){
@@ -89,14 +121,19 @@ int main(){
     cin>>n>>k>>v;
     cin.ignore();
     for(int i=0;i<n;i++){
+        bool ho,ve,di;
         cin.getline(p,100);
         int TAM = strlen(p);
         while(TAM<4){
             cin.getline(p,100);
         }
-        verifHoriz(m, p, k, v);
-        verifVert(m, p, k, v);
-        verifDiag(m, p, k, v);
+        ho=verifHoriz(m, p, k, v);
+        ve=verifVert(m, p, k, v);
+        di=verifDiag(m, p, k, v);
+        if (ho==false && ve==false && di==false)
+        {
+            cout<<"A palavra "<<p<<" não foi localizada."<<endl;
+        }
     }
     return 0;
 }
