@@ -21,6 +21,10 @@ using namespace std;
 //se ela for encontrada, tambem retornara true. Caso contrario, retornará false
 //por fim, no int main, ele imprimirá que não foi encontrada caso as 3 retorne false
 
+//Nós alteramos apenas a impressão, no caso, colocamos as impressões de forma correta(Ex: a linha 0 agora e linha 1, a 1 e 2 e assim por diante)
+//(O que está escrito acima se aplica para as colunas também)!
+//Fizemos isso pois no exemplo do classroom a impressão estava errada (ela remetia a posicao da matriz, e nao a posição da palavra, por exemplo, considerando a primeira linha como 0)
+
 bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
 {
     int f;
