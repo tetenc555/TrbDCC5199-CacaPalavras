@@ -25,9 +25,10 @@ bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
 {
     int f;
     int q;
-    int tamP = strlen(p),contP=0;
+    int tamP = strlen(p),contP;
     for (int i=0;i<l;i++) 
     {
+        contP=0;
         for (int j=0;j<c;j++) //verificacao da esquerda pra direita
         {
             if (m[i][j] == p[contP]|| m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a')
@@ -49,14 +50,12 @@ bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
                 contP=0;
             }
         }
-        for (int j=c;j>=0;j--) //verificacao da direita pra esquerda
+    }
+    for (int i=0;i<l;i++)
+    {
+        contP=0; 
+        for (int j=c-1;j>=0;j--) //verificacao da direita pra esquerda
         {
-              contP++;
-                if (contP==1)
-                {
-                    f=i+1;
-                    q=j-1;
-                }
             if (m[i][j] == p[contP]|| m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a')
             {
                 contP++;
@@ -108,7 +107,7 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
          contP++;
          if (contP==1)
                 {
-                    f=i-1;
+                    f=i+1;
                     q=j+1;
                 }
            if(m[i][j]==p[contP] || m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a'){
@@ -147,7 +146,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x++;
                 y++;
                 if (contP == tamP)
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f+1 << "," << q+1 << ").";
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
             }
             x = i;
@@ -159,7 +158,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x++;
                 y--;
                 if (contP == tamP)
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f+1 << "," << q+1 << ").";
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
             }
             x = i;
@@ -171,7 +170,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x--;
                 y++;
                 if (contP == tamP)
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f+1 << "," << q+1 << ").";
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
             }
             x = i;
@@ -183,7 +182,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x--;
                 y--;
                 if (contP == tamP)
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f+1 << "," << q+1 << ")." << endl;
+                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")." << endl;
                     return true;
             }
             x = i;
@@ -213,14 +212,11 @@ int main(){
         }
     }
     for(int i=0;i<n;i++){
-        ho = false;
-        ve = false;
-        di = false;
         ho = verifHoriz(m, p[i], k, v);
         ve = verifVert(m, p[i], k, v);
         di = verifDiag(m, p[i], k, v);
         if(ho==false && ve==false && di==false){
-        cout << "A palavra " << p << " não foi localizada." << endl;
+            cout << "A palavra " << p[i] << " não foi localizada." << endl;
         }
     }
     return 0;
