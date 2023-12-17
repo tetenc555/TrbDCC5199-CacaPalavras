@@ -133,56 +133,75 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
     {
         for (int j=0;j<c;j++)
         {
-            if (contP==1)
-                {
-                    f=i+1;
-                    q=j+1;
-                }
             int x = i, y = j, contP = 0;
             while (x < l && y < c && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
             {
                 contP++;
+                if (contP==1)
+                    {
+                        f=i+1;
+                        q=j+1;
+                    }
                 x++;
                 y++;
-                if (contP == tamP)
+                if (contP == tamP){
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
+                }
             }
             x = i;
             y = j;
             contP = 0;
-            while (x < l && y < c && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
+            while (x < l && y >= 0 && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
             {
                 contP++;
+                if (contP==1)
+                    {
+                        f=i+1;
+                        q=j+1;
+                    }
                 x++;
                 y--;
-                if (contP == tamP)
+                if (contP == tamP){
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
+                }
             }
             x = i;
             y = j;
             contP = 0;
-            while (x < l && y < c && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
+            while (x >= 0 && y < c && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
             {
                 contP++;
+                if (contP==1)
+                    {
+                        f=i+1;
+                        q=j+1;
+                    }
                 x--;
                 y++;
-                if (contP == tamP)
+                if (contP == tamP){
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
+                }
             }
             x = i;
             y = j;
             contP = 0;
-            while (x < l && y < c && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
+            while (x >= 0 && y >= 0 && (m[x][y] == p[contP] || m[x][y]==p[contP]-'a'+'A' || m[x][y]==p[contP]-'A'+'a'))
             {
                 contP++;
+                if (contP==1)
+                    {
+                        f=i+1;
+                        q=j+1;
+                    }
                 x--;
                 y--;
-                if (contP == tamP)
+                if (contP == tamP){
                     cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")." << endl;
                     return true;
+                }
             }
             x = i;
             y = j;
