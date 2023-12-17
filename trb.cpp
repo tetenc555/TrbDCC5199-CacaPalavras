@@ -11,6 +11,7 @@ Participantes c/ Matrícula:
 #define M 10
 #define N 100
 using namespace std;
+//Explicações do Código:
 
 //O trabalho foi feito em conjunto presencialmente, também utilizando o VSCode Live Share
 //Desse modo, mantivemos os mesmos padrões nas nomeclaturas das variáveis
@@ -24,6 +25,8 @@ using namespace std;
 //Nós alteramos apenas a impressão, no caso, colocamos as impressões de forma correta(Ex: a linha 0 agora e linha 1, a 1 e 2 e assim por diante)
 //(O que está escrito acima se aplica para as colunas também)!
 //Fizemos isso pois no exemplo do classroom a impressão estava errada (ela remetia a posicao da matriz, e nao a posição da palavra, por exemplo, considerando a primeira linha como 0)
+
+//Obs: nós usamos matrizes de caracteres porque achamos que seria mais fácil do que vetores, mesmo que não tenhamos visto muito sobre esse tipo de matriz!(acabou que aprendemos a mexer com ela e por isso mantivemos)
 
 bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
 {
@@ -45,7 +48,7 @@ bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
                 }
                 if (contP == tamP)
                 {
-                    cout << "Palavra " << p << " foi localizada horizontalmente a partir de posição (" << f << "," << q << ")." << endl;
+                    cout << "A palavra \"" << p << "\" foi localizada horizontalmente a partir de posição (" << f << "," << q << ")." << endl;
                     return true;
                 }
             }
@@ -70,7 +73,7 @@ bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
                 }
                 if (contP == tamP)
                 {
-                    cout << "Palavra " << p << " foi localizada horizontalmente a partir de posição (" << f << "," << q << ")." << endl;
+                    cout << "A palavra \"" << p << "\" foi localizada horizontalmente a partir de posição (" << f << "," << q << ")." << endl;
                     return true;
                 }
             }
@@ -99,7 +102,7 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
                     q=j+1;
                 }
                 if(contP == tamanho){
-                    cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
+                    cout<<" A palavra \"" << p << "\" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
                     encontrei = true;
                     return encontrei;
                 }
@@ -116,7 +119,7 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
                     q=j+1;
                 }
                 if(contP == tamanho){
-                    cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
+                    cout<<"A palavra \"" << p << "\" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
                     encontrei = true;
                     return encontrei;
                 }
@@ -149,7 +152,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x++;
                 y++;
                 if (contP == tamP){
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
+                    cout << "A palavra \"" << p << "\" foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
                 }
             }
@@ -167,7 +170,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x++;
                 y--;
                 if (contP == tamP){
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
+                    cout << "A palavra \"" << p << "\" foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
                 }
             }
@@ -185,7 +188,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x--;
                 y++;
                 if (contP == tamP){
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
+                    cout << "A palavra \"" << p << "\" foi localizada diagonalmente a partir de posição (" << f << "," << q << ")."<< endl;
                     return true;
                 }
             }
@@ -203,7 +206,7 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
                 x--;
                 y--;
                 if (contP == tamP){
-                    cout << "A palavra " << p << " foi localizada diagonalmente a partir de posição (" << f << "," << q << ")." << endl;
+                    cout << "A palavra \"" << p << "\" foi localizada diagonalmente a partir de posição (" << f << "," << q << ")." << endl;
                     return true;
                 }
             }
@@ -238,7 +241,7 @@ int main(){
         ve = verifVert(m, p[i], k, v);
         di = verifDiag(m, p[i], k, v);
         if(ho==false && ve==false && di==false){
-            cout << "A palavra " << p[i] << " não foi localizada." << endl;
+            cout << "A palavra \"" << p[i] << "\" não foi localizada." << endl;
         }
     }
     return 0;
