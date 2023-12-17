@@ -51,6 +51,12 @@ bool verifHoriz(char m[M][M], char p[N], int l, int c) // feito por Estêvão
         }
         for (int j=c;j>=0;j--) //verificacao da direita pra esquerda
         {
+              contP++;
+                if (contP==1)
+                {
+                    f=i+1;
+                    q=j-1;
+                }
             if (m[i][j] == p[contP]|| m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a')
             {
                 contP++;
@@ -80,15 +86,15 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
     bool encontrei=false;
     int tamanho = strlen(p);
     int contP=0;
-    for(int i=0;i<l;i++){
-        for(int j=0;j<c;j++){//verifica vertical de cima pra baixo
-           if(m[j][i]==p[contP] || m[j][i]==p[contP]-'a'+'A' || m[j][i]==p[contP]-'A'+'a'){
+    for(int j=0;j<c;j++){//verifica vertical de cima pra baixo
+        for(int i=0;i<l;i++){
+           if(m[i][j]==p[contP] || m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a'){
+                contP++;
                 if (contP==1)
                 {
                     f=i+1;
                     q=j+1;
                 }
-                contP++;
                 if(contP == tamanho){
                     cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
                     encontrei = true;
@@ -98,8 +104,14 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
                 contP=0;
             }
         }
-        for(int j=c;j>=0;j--){//verifica vertical de baixo pra cima
-           if(m[j][i]==p[contP] || m[j][i]==p[contP]-'a'+'A' || m[j][i]==p[contP]-'A'+'a'){
+        for(int i=l;i>=0;i--){//verifica vertical de baixo pra cima
+         contP++;
+         if (contP==1)
+                {
+                    f=i-1;
+                    q=j+1;
+                }
+           if(m[i][j]==p[contP] || m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a'){
                 contP++;
                 if(contP == tamanho){
                     cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
@@ -181,37 +193,6 @@ bool verifDiag(char m[M][M], char p[N], int l, int c){ // feito por Cauã
     }
     return false;
 }
-
-/*int main(){
-    bool ho, ve, di;
-    char m[M][M]={}, p[N][N]={};
-    int n, k, v;
-    cin >> n >> k >> v;
-    cin.ignore();
-
-    for(int i = 0; i < n; i++) {
-        cin >> p[i];
-    }
-
-    for(int i = 0; i < k; i++) {
-        for(int j = 0; j < v; j++) {
-            cin >> m[i][j];
-        }
-    }
-
-    for(int i = 0; i < n; i++) {
-        ho = verifHoriz(m, p[i], k, v);
-        ve = verifVert(m, p[i], k, v);
-        di = verifDiag(m, p[i], k, v);
-        if(ho==false && ve==false && di==false){
-        cout << "A palavra " << p[i] << " não foi localizada." << endl;
-        }
-    }
-    
-    return 0;
-}*/
-
-
 int main(){
     bool ho, ve, di;
     char m[M][M]={},p[N][N]={};
