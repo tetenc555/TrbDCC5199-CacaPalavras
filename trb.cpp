@@ -104,14 +104,13 @@ bool verifVert(char m[M][M], char p[N], int l, int c){ // feito por João
             }
         }
         for(int i=l;i>=0;i--){//verifica vertical de baixo pra cima
-         contP++;
-         if (contP==1)
+            if(m[i][j]==p[contP] || m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a'){
+                contP++;
+                if (contP==1)
                 {
                     f=i+1;
                     q=j+1;
                 }
-           if(m[i][j]==p[contP] || m[i][j]==p[contP]-'a'+'A' || m[i][j]==p[contP]-'A'+'a'){
-                contP++;
                 if(contP == tamanho){
                     cout<<"Palavra "<<p<<" foi localizada verticalmente a partir de posição (" << f << "," << q << ")."<<endl;
                     encontrei = true;
